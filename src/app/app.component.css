@@ -1,0 +1,13 @@
+.app-logo {
+    max-height: 64px;
+    max-width: 100%;
+    padding-top: 10px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.app-bar {
+    background: #EEEEEE;
+    /* padding: 8px; */
+    margin: 0;
+}
