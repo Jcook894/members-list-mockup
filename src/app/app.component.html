@@ -25,14 +25,11 @@
                   type="text">
             </mz-datepicker-container>
       </div>
-      <div class="col s12 m12 l12" style="text-align: center;">
-        <p>OR</p>
-      </div>
       <div class="row">
           <div class="col s12 m12 l12">
               <input type="text" name="massHealthIDFilter" placeholder="MassHealth ID" [(ngModel)]="massHealthIDFilter" autofocus>
+              <input id="showMyMembers" (click)="toggleMembersList(!showMyMembers)" type="checkbox" class="indeterminate-checkbox" checked="showMyMembers">
               <label for="showMyMembers">
-                  <input id="showMyMembers" (click)="toggleMembersList(!showMyMembers)" type="checkbox" class="indeterminate-checkbox" checked="showMyMembers">
                   <span>Show My Members</span>
               </label>
           </div>
@@ -64,7 +61,7 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let member of memberList | filters : 'LastName' : memberLastNameFilter | filters : 'MassHealthID': massHealthIDFilter | filters : 'DOB' : memberDOBFilter | filters : 'AssignedToCurrentUser' : showMyMembers; index as i">
+            <ng-container *ngFor="let member of memberList | filters : 'LastName' : memberLastNameFilter | filters : 'MassHealthID': massHealthIDFilter | filters : 'DOB' : memberDOBFilter ; index as i">
                 <tr  (click)="dataModal.openModal()">
                     <td>{{member.MassHealthID}}</td>
                     <td>{{member.MedicaidID}}</td>
@@ -77,13 +74,12 @@
                     <td>{{member.CA}}</td>
                     <td>{{member.CP}}</td>
                     <td>{{member.CHW}}</td>
-                    
                   </tr>
-                  <mz-modal #dataModal [fixedFooter]="true" [options]="modalOptions">
-                      <mz-modal-header>
+                  <mz-modal #dataModal [fixedFooter]="true">
+                      <mz-modal-header style='text-align: center'>
                         <h4>Member Information</h4>
                       </mz-modal-header>
-                      <mz-modal-content>
+                      <mz-modal-content style='text-align: center'>
                           <ul>
                             <li>MassHealth ID : {{member.MassHealthID}}</li>
                             <li>Medicaid ID : {{member.MedicaidID}}</li>
