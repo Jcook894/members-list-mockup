@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
    */
   memberList = [
     {
-      MassHealthID: 534253425234,
+      MassHealthID: '534253425234',
       MedicaidID: 56789,
       RiskScore: 9000,
       LastName: 'Cook',
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
       AssignedToCurrentUser: true
     },
     {
-      MassHealthID: 9785897648764,
+      MassHealthID: '9785897648764',
       MedicaidID: 56789,
       RiskScore: 8000,
       LastName: 'Iannuci',
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       AssignedToCurrentUser: true
     },
     {
-      MassHealthID: 1234637567599,
+      MassHealthID: '1234637567599',
       MedicaidID: 56789,
       RiskScore: 7000,
       LastName: 'Dill',
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
       AssignedToCurrentUser: true
     },
     {
-      MassHealthID: 6546546756876,
+      MassHealthID: '6546546756876',
       MedicaidID: 56789,
       RiskScore: 6000,
       LastName: 'Reider',
@@ -84,6 +84,34 @@ export class AppComponent implements OnInit {
       CP: 'N S',
       CHW: 'S C',
       AssignedToCurrentUser: true
+    },
+    {
+      MassHealthID: '7383659927346',
+      MedicaidID: 56789,
+      RiskScore: 6000,
+      LastName: 'Test',
+      FirstName: '6',
+      DOB: '03/08/1994',
+      PCP: 'S N',
+      CNS: 'C',
+      CA: 'S C',
+      CP: 'N S',
+      CHW: 'S C',
+      AssignedToCurrentUser: false
+    },
+    {
+      MassHealthID: '79879876583344',
+      MedicaidID: 56789,
+      RiskScore: 6000,
+      LastName: 'Test',
+      FirstName: '7',
+      DOB: '03/08/1994',
+      PCP: 'S N',
+      CNS: 'C',
+      CA: 'S C',
+      CP: 'N S',
+      CHW: 'S C',
+      AssignedToCurrentUser: false
     },
   ];
   constructor(private cd: ChangeDetectorRef){}

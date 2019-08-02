@@ -6,13 +6,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FiltersPipe implements PipeTransform {
 
   transform(items: any[], field: string, value: string): any[] {
+    console.log(items);
     if (!items) {
         return [];
     }
     if (!field || !value) {
         return items;
     }
-    return items.filter(singleItem => singleItem['LastName'].toLowerCase().includes(value.toLowerCase()));
 
+    if (field === 'AssignedToCurrentUser') {
+      return items.filter(singleItem => singleItem[field]);
+    } else {
+      return items.filter(singleItem => singleItem[field].toLowerCase().includes(value.toLowerCase()));
+    }
   }
 }

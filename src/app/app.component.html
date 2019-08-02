@@ -54,7 +54,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let member of memberList | filters : 'name' : memberLastNameFilter;">
+            <tr *ngFor="let member of memberList | filters : 'LastName' : memberLastNameFilter | filters : 'MassHealthID': massHealthIDFilter | filters : 'DOB' : memberDOBFilter | filters : 'AssignedToCurrentUser' : showMyMembers; index as i">
               <td>{{member.MassHealthID}}</td>
               <td>{{member.MedicaidID}}</td>
               <td>{{member.RiskScore}}</td>
