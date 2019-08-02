@@ -1,3 +1,7 @@
+<script>
+    $('.datepicker').datepicker();
+
+</script>
 <div class="app-bar" style="text-align:center;">
   <div>
       <div>
@@ -8,12 +12,18 @@
 <div class="container">
   <form #tableFilters="ngForm" novalidate>
     <div class="row">
-        <div class="col s6 m6 l6">
+        <div class="col s6 m6 l6" style="margin-top: 1rem;">
           <input type="text" name="memberLastNameFilter" placeholder="Member Last Name" [(ngModel)]="memberLastNameFilter" autofocus>
         </div>
-        <div class="col s6 m6 l6">
-            <input type="text" name="memberDOBFilter" placeholder="Member Date of Birth" [(ngModel)]="memberDOBFilter" autofocus>
-        </div>
+            <mz-datepicker-container class="col s6 m6 l6" (click)="$event.stopPropagation()" style=" margin-top:0rem !important;">
+                <input mz-datepicker
+                  [(ngModel)]="memberDOBFilter"
+                  [options]="options"
+                  id="datepicker"
+                  placeholder="Date of Birth"
+                  name="memberDOBFilter"
+                  type="text">
+            </mz-datepicker-container>
       </div>
       <div class="col s12 m12 l12" style="text-align: center;">
         <p>OR</p>
@@ -54,21 +64,49 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let member of memberList | filters : 'LastName' : memberLastNameFilter | filters : 'MassHealthID': massHealthIDFilter | filters : 'DOB' : memberDOBFilter | filters : 'AssignedToCurrentUser' : showMyMembers; index as i">
-              <td>{{member.MassHealthID}}</td>
-              <td>{{member.MedicaidID}}</td>
-              <td>{{member.RiskScore}}</td>
-              <td>{{member.LastName}}</td>
-              <td>{{member.FirstName}}</td>
-              <td>{{member.DOB}}</td>
-              <td>{{member.PCP}}</td>
-              <td>{{member.CNS}}</td>
-              <td>{{member.CA}}</td>
-              <td>{{member.CP}}</td>
-              <td>{{member.CHW}}</td>
-            </tr>
+            <ng-container *ngFor="let member of memberList | filters : 'LastName' : memberLastNameFilter | filters : 'MassHealthID': massHealthIDFilter | filters : 'DOB' : memberDOBFilter | filters : 'AssignedToCurrentUser' : showMyMembers; index as i">
+                <tr  (click)="dataModal.openModal()">
+                    <td>{{member.MassHealthID}}</td>
+                    <td>{{member.MedicaidID}}</td>
+                    <td>{{member.RiskScore}}</td>
+                    <td>{{member.LastName}}</td>
+                    <td>{{member.FirstName}}</td>
+                    <td>{{member.DOB}}</td>
+                    <td>{{member.PCP}}</td>
+                    <td>{{member.CNS}}</td>
+                    <td>{{member.CA}}</td>
+                    <td>{{member.CP}}</td>
+                    <td>{{member.CHW}}</td>
+                    
+                  </tr>
+                  <mz-modal #dataModal [fixedFooter]="true" [options]="modalOptions">
+                      <mz-modal-header>
+                        <h4>Member Information</h4>
+                      </mz-modal-header>
+                      <mz-modal-content>
+                          <ul>
+                            <li>MassHealth ID : {{member.MassHealthID}}</li>
+                            <li>Medicaid ID : {{member.MedicaidID}}</li>
+                            <li>Risk Score : {{member.RiskScore}}</li>
+                            <li>Last Name : {{member.LastName}}</li>
+                            <li>First Name : {{member.FirstName}}</li>
+                            <li>Date of Birth: {{member.DOB}}</li>
+                            <li>PCP : {{member.PCP}}</li>
+                            <li>CNS : {{member.CNS}}</li>
+                            <li>CA : {{member.CA}}</li>
+                            <li>CP : {{member.CP}}</li>
+                            <li>CHW : {{member.CHW}}</li>
+                          </ul>
+                      </mz-modal-content>
+                      <mz-modal-footer>
+                        <button mz-button mz-modal-close>Close</button>
+                      </mz-modal-footer>
+                    </mz-modal>
+            </ng-container>
+            
           </tbody>
         </table>
     </div>
   </div>
 </div>
+

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { MzModalService } from 'ngx-materialize';
+
 
 @Component({
   selector: 'app-root',
@@ -20,11 +22,14 @@ export class AppComponent implements OnInit {
    */
   massHealthIDFilter: string;
   /**
-   * Form Controls
+   * Formatting options for date input
    */
-  // @ViewChild('tableFilters', {
-  //   static: false
-  // })
+  options: Pickadate.DateOptions = {
+    format: 'mm/dd/yyyy',
+    formatSubmit: 'mm/dd/yyyy',
+    selectMonths: true,
+    selectYears: 100
+  };
   /**
    * Dummy member data
    */
@@ -35,7 +40,7 @@ export class AppComponent implements OnInit {
       RiskScore: 9000,
       LastName: 'Cook',
       FirstName: 'Julian',
-      DOB: '03/08/1994',
+      DOB: '03/08/2019',
       PCP: 'S N',
       CNS: 'C',
       CA: 'S C',
@@ -114,7 +119,7 @@ export class AppComponent implements OnInit {
       AssignedToCurrentUser: false
     },
   ];
-  constructor(private cd: ChangeDetectorRef){}
+  constructor(private cd: ChangeDetectorRef, private modal: MzModalService) {}
   /**
    * Show members assigned/not assigned to user
    */
@@ -130,5 +135,39 @@ export class AppComponent implements OnInit {
    */
   toggleMembersList(showMyMems: boolean) {
     this.showMyMembers = showMyMems;
+  }
+
+  showData(rowData: any) {
+
+    console.log(rowData);
+
+   const data = '<mz-modal #basicModal>'
+    + '<mz-modal-header>'
+     + '<h4>Modal Title</h4>'
+    + '</mz-modal-header>'
+    + '<mz-modal-content>'
+   + '<ul>'
+   + '<li>MassHealth Id: '+ rowData.MassHealthID +'</li>'
+   + '<li>MassHealth Id: '+ rowData.MedicaidID +'</li>'
+   + '<li>MassHealth Id: '+ rowData.RiskScore +'</li>'
+   + '<li>MassHealth Id: '+ rowData.LastName +'</li>'
+   + '<li>MassHealth Id: '+ rowData.FirstNane +'</li>'
+   + '<li>MassHealth Id: '+ rowData.DOB +'</li>'
+   + '<li>MassHealth Id: '+ rowData.CA +'</li>'
+   + '<li>MassHealth Id: '+ rowData.CHW +'</li>'
+   + '<li>MassHealth Id: '+ rowData.CNS +'</li>'
+   + '<li>MassHealth Id: '+ rowData.PCP +'</li>'
+   + '<li>MassHealth Id: '+ rowData.CHW +'</li>'
+   +'</ul>'
+   + '</mz-modal-content>'
+    + '<mz-modal-footer>'
+     + '<button mz-button [flat]="true" mz-modal-close>Disagree</button>'
+      + '<button mz-button [flat]="true" mz-modal-close>Agree</button>'
+  + '    </mz-modal-footer>'
+  + '  </mz-modal>';
+    console.log(data);
+
+    this.modal;
+
   }
 }
