@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Building for Github Pages
+
+To build app for GitHub Pages, run ng `build --prod --base-href "https://jcook894.github.io/members-list-mockup/"`
+
+## Deploying to GitHub Pages
+
+To deploy newly built code, run `npx angular-cli-ghpages --dir=dist/list-screen-mockup`
