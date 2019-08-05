@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: true
+      AssignedToCurrentUser: 'true'
     },
     {
       MassHealthID: '9785897648764',
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: true
+      AssignedToCurrentUser: 'true'
     },
     {
       MassHealthID: '1234637567599',
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: true
+      AssignedToCurrentUser: 'true'
     },
     {
       MassHealthID: '6546546756876',
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: true
+      AssignedToCurrentUser: 'true'
     },
     {
       MassHealthID: '7383659927346',
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: false
+      AssignedToCurrentUser: 'false'
     },
     {
       MassHealthID: '79879876583344',
@@ -116,17 +116,20 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: false
+      AssignedToCurrentUser: 'false'
     },
   ];
   constructor(private cd: ChangeDetectorRef, private modal: MzModalService) {}
   /**
    * Show members assigned/not assigned to user
    */
-  showMyMembers: boolean;
+  showMyMembers: string;
+
+  toggleMembers: any;
 
   ngOnInit() {
-    this.showMyMembers = true;
+    this.showMyMembers = 'true';
+    this.toggleMembers = true;
   }
   /**
    * Toggles table to show members assigned to current user
@@ -134,6 +137,25 @@ export class AppComponent implements OnInit {
    * @param showMyMems
    */
   toggleMembersList(showMyMems: boolean) {
-    this.showMyMembers = showMyMems;
+
+    if (showMyMems === true) {
+      this.toggleMembers = false;
+      this.showMyMembers = 'false';
+    } else {
+      this.toggleMembers = true;
+      this.showMyMembers = 'true';
+    }
+
+    this.showMyMembers = this.toggleMembers.toString();
+  }
+
+  /**
+   * Resets filter inputs
+   */
+  resetFilters() {
+    this.toggleMembers = true;
+    this.memberLastNameFilter = null;
+    this.memberDOBFilter = null;
+    this.massHealthIDFilter = null;
   }
 }

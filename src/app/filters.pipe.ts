@@ -14,8 +14,7 @@ export class FiltersPipe implements PipeTransform {
     }
 
     if (field === 'AssignedToCurrentUser') {
-      console.log(field);
-      return items.filter(singleItem => singleItem[field] === true);
+      return items.filter(singleItem => singleItem[field].includes('true'));
     } else {
       return items.filter(singleItem => singleItem[field].toLowerCase().includes(value.toLowerCase()));
     }
