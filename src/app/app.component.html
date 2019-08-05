@@ -1,7 +1,3 @@
-<script>
-    $('.datepicker').datepicker();
-
-</script>
 <div class="app-bar" style="text-align:center;">
   <div>
       <div>
@@ -38,7 +34,7 @@
             </label>
         </div>
         <div class="col s6 m6 l6" style="text-align:right;">
-            <button class="waves-effect waves-light btn yellow" style="color:black;" (click)="resetFilters()">Reset Filters</button>
+            <button class="waves-effect waves-light btn red" (click)="resetFilters()">Reset Filters</button>
         </div>
       </div>
   </form>
@@ -51,6 +47,8 @@
       </h4>
     </div>
     <div class="col s12 m12 l12">
+      <!-- TODO: Need to add groups col with correlating data. Set up modal information as well.
+        Need to find all data for groups (diabetes, asthma, etc)...  -->
         <table class="highlight responsive-table">
           <thead>
             <tr>
@@ -65,6 +63,7 @@
               <th>CA</th>
               <th>CP</th>
               <th>CHW</th>
+              <th>Group</th>
             </tr>
           </thead>
           <tbody>
@@ -81,7 +80,9 @@
                     <td>{{member.CA}}</td>
                     <td>{{member.CP}}</td>
                     <td>{{member.CHW}}</td>
+                    <td></td>
                   </tr>
+                  <!--Modal showing patient data.-->
                   <mz-modal #dataModal [fixedFooter]="true">
                       <mz-modal-header style="text-align: center;">
                         <h4>Member Information</h4>
@@ -99,6 +100,7 @@
                             <li>CA : {{member.CA}}</li>
                             <li>CP : {{member.CP}}</li>
                             <li>CHW : {{member.CHW}}</li>
+                            <li>Groups : </li>
                           </ul>
                       </mz-modal-content>
                       <mz-modal-footer>
