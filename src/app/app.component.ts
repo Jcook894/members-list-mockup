@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'true'
+      AssignedToCurrentUser: true
     },
     {
       MassHealthID: '9785897648764',
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'true'
+      AssignedToCurrentUser: true
     },
     {
       MassHealthID: '1234637567599',
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'true'
+      AssignedToCurrentUser: true
     },
     {
       MassHealthID: '6546546756876',
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'true'
+      AssignedToCurrentUser: true
     },
     {
       MassHealthID: '7383659927346',
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'false'
+      AssignedToCurrentUser: false
     },
     {
       MassHealthID: '79879876583344',
@@ -116,7 +116,7 @@ export class AppComponent implements OnInit {
       CA: 'S C',
       CP: 'N S',
       CHW: 'S C',
-      AssignedToCurrentUser: 'false'
+      AssignedToCurrentUser: false
     },
   ];
   constructor(private cd: ChangeDetectorRef, private modal: MzModalService) {}
